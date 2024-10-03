@@ -21,7 +21,10 @@ def main ():
         print(f"Current balance : ${balance}")
 
         bet = input("Place your bet amount: ")
-        
+
+        if not bet.isdigit():
+            print("-Please enter a valid number-")
+            continue
 
 if __name__ == '__main__':
     main()
