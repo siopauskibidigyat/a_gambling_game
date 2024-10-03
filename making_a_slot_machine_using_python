@@ -17,5 +17,11 @@ def main ():
     print("Symbols: 🍒 🍋 🍉 🔔 ⭐ ")
     print("-----------------------")
 
+    while balance > 0:
+        print(f"Current balance : ${balance}")
+
+        bet = input("Place your bet amount: ")
+        
+
 if __name__ == '__main__':
     main()
