@@ -38,6 +38,9 @@ def load_progress():
 def main ():
     balance = load_progress()
     free_spins = 0
+    total_spins = 0
+    total_bets = 0
+    total_payouts = 0
 
     print("-----------------------")
     print("Welcome to Python Slots")
@@ -83,8 +86,12 @@ def main ():
             print("Better luck next time!")
 
         if row[0] == row[1] == row[2]:
-            print(f"You hit three {row[0]}! You won 10 free spins!")
+            print(f"You hit three {row[0]}! You also won 10 free spins!")
             free_spins += 10
+        
+        total_spins +=1
+        total_bets += bet
+        total_payouts += payout     
 
         if free_spins == 0:  
             play_again = input("Do you want to spin again? (Y/N): ").upper()
@@ -98,6 +105,10 @@ def main ():
     print("********************************************")
     print(f"Game over! Your final balance is ${balance}")
     print("********************************************")
+    print("Game Summary:")
+    print(f"Total games played: {total_spins}")
+    print(f"Total bets placed: ${total_bets}")
+    print(f"Total payouts received: ${total_payouts}")
 
     save_progress(balance)
 
