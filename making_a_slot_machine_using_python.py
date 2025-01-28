@@ -1,6 +1,7 @@
 #Python Slot Machine
 
 import random
+import os
 
 def spin_row():
     symbols = ['🍒', '🍋', '🍉', '🔔', '⭐']
@@ -24,10 +25,20 @@ def get_payout(row, bet):
             return bet * 10
         elif row[0] == '⭐':
             return bet * 20
-    return 0      
+    return 0 
+
+def save_progress(balance):
+    with open("slot_save.txt", "w") as f:
+        f.write(str(balance))
+
+def load_progress():
+    if os.path.exists("slot_save.txt"):
+        with open("slot_save.txt", "r") as f:
+            return int(f.read())
+    return 100       
 
 def main ():
-    balance = 100
+    balance = load_progress()
 
     print("-----------------------")
     print("Welcome to Python Slots")
@@ -77,6 +88,8 @@ def main ():
     print("********************************************")
     print(f"Game over! Your final balance is ${balance}")
     print("********************************************")
+
+    save_progress(balance)
 
 if __name__ == '__main__':
     main()
